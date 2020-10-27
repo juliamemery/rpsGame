@@ -36,19 +36,25 @@ if __name__=='__main__':
     ct: int = 0
     score: int = 0
     play_again: bool = True
-    print("Let's play rock, paper, scissors, shoot!")
-    print("Choose how many rounds to play:\t")
-    games: int = int(input())
-    while ct < games:
-        print("Choose your move: [R/P/S]\t")
-        move: str = input()
-        result, comp_move = rpsFunction(move)
-        if result > 0:
-            score += 1
-            print(f"You win! {move} beats {comp_move}.")
-        elif result == 0:
-            print("Tie.")
-        else:
-            print(f"You lost! {comp_move} beats {move}.")
-        ct += 1
-    print(f"Good game! You won {score} out of {games} games.")
+    while play_again:
+        print("Let's play rock, paper, scissors, shoot!")
+        print("Choose how many rounds to play:\t")
+        games: int = int(input())
+        while ct < games:
+            print("Choose your move: [R/P/S]\t")
+            move: str = input()
+            result, comp_move = rpsFunction(move)
+            if result > 0:
+                score += 1
+                print(f"You win! {move} beats {comp_move}.")
+            elif result == 0:
+                print("Tie.")
+            else:
+                print(f"You lost! {comp_move} beats {move}.")
+            ct += 1
+        print(f"Good game! You won {score} out of {games} games.")
+        print("Play again? [Y/N]")
+        ct = 0
+        decision: str = input()
+        if decision == 'n' or decision == 'N':
+            play_again = False
